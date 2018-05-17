@@ -2,7 +2,7 @@
     <div>
         <div id="chart"></div>
         
-        <p class="source">Source: Center for Public Integrity analysis of Internal Revenue Service documents.</p>
+        <p class="source">Source: Center for Public Integrity analysis of American Community Survey data.</p>
     </div>
 </template>
 
@@ -27,11 +27,9 @@ export default {
                 let seriesI = {};
                 seriesI.name = mydata.index[i];
                 seriesI.data = mydata.data[i];
-                // Doing this to compensate for 2 leap years and it's fine
-                // but this kind of thing would never happen in D3 just saying
                 seriesI.pointStart = Date.UTC(2007,0,1); 
                 seriesI.pointIntervalUnit = 'year'
-                seriesI.marker = { symbol: 'circle' };
+                seriesI.marker = { symbol: 'circle', radius: 3.5 };
                 tar.push(seriesI);
             }
             return tar;
@@ -41,7 +39,7 @@ export default {
         let cols = this.makeDates(data.columns)
         let dSeries = this.makeSeries(data);
         Highcharts.chart('chart', {
-            colors: ['#525252', '#969696','#bd0026', '#f03b20'],
+            colors: ['#a1a1a1', '#bdbdbd','#cd0026', '#f03b20'],
             title: {
                 display: 'null',
                 text: ' ',
@@ -57,13 +55,15 @@ export default {
             },
             xAxis: {
                 plotBands: [{ 
-                    color: '#eee0cd',
+                    color: 'rgb(243, 243, 243)',
                     from: Date.UTC(2007,11,1),
                     to: Date.UTC(2009,6,1),
                     label: {
                         text: 'Recession',
-                        align: 'right',
-                        x: -10
+                        align: 'center',
+                        style: {
+                            color: '#737373'
+                        }
                     }
                 }],
                 labels: {
@@ -81,18 +81,18 @@ export default {
                     formatter() {
                         return `${Highcharts.numberFormat(this.value, 0)}%`;
                     }
-                    // step: 2
                 },
                 plotLines: [
                     {
                         value: 0,
-                        width: 1,
-                        color: '#808080'
+                        width: 1.5,
+                        color: '#bebebe'
                     }
                 ]
             },
             tooltip: {
-                valuePrefix: '$'
+                pointFormat: '{series.name}:<b>{point.y:.1f}%</b>',
+                crosshairs: true
             },
             legend: {
                 enabled: true,

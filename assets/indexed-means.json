@@ -11,7 +11,7 @@
 		2015.0,
 		2016.0
 	],
-	"index": ["20_US", "95_US","20_BP", "95_BP"],
+	"index": ["U.S. Bottom 20%", "U.S. Top 5%","Bridgeport-Stamford-Norwalk Bottom 20%", "Bridgeport-Stamford-Norwalk Top 5%"],
 	"data": [
 		[
 			0.0,
