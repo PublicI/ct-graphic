@@ -29,8 +29,8 @@ export default {
                 seriesI.data = mydata.data[i];
                 // Doing this to compensate for 2 leap years and it's fine
                 // but this kind of thing would never happen in D3 just saying
-                seriesI.pointStart = Date.UTC(2007,0,3); 
-                seriesI.pointInterval = 365 * 24 * 3600 * 1000
+                seriesI.pointStart = Date.UTC(2007,0,1); 
+                seriesI.pointIntervalUnit = 'year'
                 seriesI.marker = { symbol: 'circle' };
                 tar.push(seriesI);
             }
