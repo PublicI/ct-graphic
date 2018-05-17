@@ -38,6 +38,17 @@ export default {
     mounted() {
         let cols = this.makeDates(data.columns)
         let dSeries = this.makeSeries(data);
+
+        Highcharts.setOptions({
+            chart: {
+                style: {
+                    fontFamily: 'tablet-gothic-narrow'
+                }
+            }
+        });
+
+
+
         Highcharts.chart('chart', {
             colors: ['#a1a1a1', '#bdbdbd','#cd0026', '#f03b20'],
             title: {
@@ -96,9 +107,8 @@ export default {
             },
             legend: {
                 enabled: true,
-                layout: 'vertical',
                 align: 'right',
-                verticalAlign: 'middle',
+                verticalAlign: 'bottom',
                 borderWidth: 0
             },
             series: dSeries,
@@ -108,6 +118,8 @@ export default {
         });
     }
 };
+
+
 </script>
 
 <style scoped>
