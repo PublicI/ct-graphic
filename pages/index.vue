@@ -14,22 +14,34 @@ import Highcharts from 'highcharts';
 
 export default {
     methods: {
+        makeDates(floatArr) {
+            let tar = [];
+            for (let i = 0; i < floatArr.length; i++) {
+                tar[i] = Date.UTC(floatArr[i],0,1);
+            }
+            return tar;
+        },
         makeSeries(mydata) {
             const tar = [];
             for (let i = 0; i < mydata.index.length; i++) {
                 let seriesI = {};
                 seriesI.name = mydata.index[i];
                 seriesI.data = mydata.data[i];
+                // Doing this to compensate for 2 leap years and it's fine
+                // but this kind of thing would never happen in D3 just saying
+                seriesI.pointStart = Date.UTC(2007,0,3); 
+                seriesI.pointInterval = 365 * 24 * 3600 * 1000
+                seriesI.marker = { symbol: 'circle' };
                 tar.push(seriesI);
             }
             return tar;
         }
     },
     mounted() {
+        let cols = this.makeDates(data.columns)
         let dSeries = this.makeSeries(data);
-
         Highcharts.chart('chart', {
-            colors: ['red', '#ff6100', '#ff9900', 'rgb(150,150,150)'],
+            colors: ['#525252', '#969696','#bd0026', '#f03b20'],
             title: {
                 display: 'null',
                 text: ' ',
@@ -44,12 +56,22 @@ export default {
                 enabled: false
             },
             xAxis: {
+                plotBands: [{ 
+                    color: '#eee0cd',
+                    from: Date.UTC(2007,11,1),
+                    to: Date.UTC(2009,6,1),
+                    label: {
+                        text: 'Recession',
+                        align: 'right',
+                        x: -10
+                    }
+                }],
                 labels: {
                     style: {
                         fontSize: '10px'
                     }
                 },
-                categories: data.columns
+                type: 'datetime'
             },
             yAxis: {
                 title: {
@@ -79,7 +101,10 @@ export default {
                 verticalAlign: 'middle',
                 borderWidth: 0
             },
-            series: dSeries
+            series: dSeries,
+            style: {
+                fontFamily: 'tablet-gothic-narrow'
+            }
         });
     }
 };
