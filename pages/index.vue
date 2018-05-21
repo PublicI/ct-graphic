@@ -2,7 +2,7 @@
     <div>
         <div id="chart"></div>
         
-        <p class="source">Source: Center for Public Integrity analysis of American Community Survey data.</p>
+        <p class="source">Source: Center for Public Integrity analysis of American Community Survey data. Graphic by Rosie Cima.</p>
     </div>
 </template>
 
@@ -50,7 +50,7 @@ export default {
 
 
         Highcharts.chart('chart', {
-            colors: ['#cbcbcb', '#979797', '#f46d43','#d73027'],
+            colors: ['#cbcbcb', '#979797', '#f46d43','#af2020'],
             title: {
                 display: 'null',
                 text: ' ',
@@ -86,7 +86,7 @@ export default {
             },
             yAxis: {
                 title: {
-                    text: 'Percent change in income since 2007'
+                    text: 'Change in mean household income since 2007'
                 },
                 labels: {
                     formatter() {
@@ -113,7 +113,7 @@ export default {
             },
             series: dSeries,
             title: {
-                text: '<b>Bridgeport-Stamford-Norwalk recovered from the recession slowly, unequally</b>'
+                text: '<b>Bridgeport, Stamford, Norwalk area recovered from the recession slowly, unequally</b>'
             },
             style: {
                 fontFamily: 'tablet-gothic-narrow'
@@ -132,7 +132,7 @@ export default {
     padding-bottom: 20px;
 }
 .source {
-    line-height:20%;
+    line-height:120%;
     font-size:80%;
     color:#666;
 }
