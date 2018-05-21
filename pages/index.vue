@@ -50,7 +50,7 @@ export default {
 
 
         Highcharts.chart('chart', {
-            colors: ['#a1a1a1', '#bdbdbd','#cd0026', '#f03b20'],
+            colors: ['#cbcbcb', '#979797', '#f46d43','#d73027'],
             title: {
                 display: 'null',
                 text: ' ',
@@ -86,7 +86,7 @@ export default {
             },
             yAxis: {
                 title: {
-                    text: '% Change in income since 2007'
+                    text: 'Percent change in income since 2007'
                 },
                 labels: {
                     formatter() {
@@ -112,6 +112,9 @@ export default {
                 borderWidth: 0
             },
             series: dSeries,
+            title: {
+                text: '<b>Bridgeport-Stamford-Norwalk recovered from the recession slowly, unequally</b>'
+            },
             style: {
                 fontFamily: 'tablet-gothic-narrow'
             }
@@ -129,6 +132,7 @@ export default {
     padding-bottom: 20px;
 }
 .source {
+    line-height:20%;
     font-size:80%;
     color:#666;
 }
