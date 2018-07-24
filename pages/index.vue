@@ -113,7 +113,7 @@ export default {
             },
             series: dSeries,
             title: {
-                text: '<b>Bridgeport, Stamford, Norwalk area recovered from the recession slowly, unequally</b>'
+                text: '<b>Bridgeport-Stamford-Norwalk metro area recovered from the recession slowly, unequally</b>'
             },
             style: {
                 fontFamily: 'tablet-gothic-narrow'
