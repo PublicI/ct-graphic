@@ -15,7 +15,7 @@ module.exports = {
             {
                 hid: 'description',
                 name: 'description',
-                content: 'A Center for Public Integrity project'
+                content: ''
             }
         ],
         link: [
@@ -52,7 +52,7 @@ module.exports = {
         baseURL: process.server
             ? `http://${process.env.HOST || 'localhost'}:${process.env.PORT ||
                   3000}`
-            : ''
+            : `/${pkg.name}/`
     },
     generate: {
         minify: {
@@ -60,12 +60,12 @@ module.exports = {
             removeEmptyAttributes: false
         }
     },
-    /*
-     ** Global CSS
-     */
     router: {
         base: `/${pkg.name}/`
     },
+    /*
+     ** Global CSS
+     */
     css: ['~/assets/css/site.css', '~/assets/css/main.css'],
     /*
      ** Add axios globally
@@ -76,6 +76,12 @@ module.exports = {
          ** Run ESLINT on save
          */
         extend(config, ctx) {
+            config.module.rules.push({
+                test: /\.(csv)$/,
+                loader: 'dsv-loader',
+                exclude: /(node_modules)/
+            });
+
             if (ctx.isClient) {
                 config.module.rules.push({
                     enforce: 'pre',
